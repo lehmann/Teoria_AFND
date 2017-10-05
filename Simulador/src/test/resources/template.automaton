@@ -1,0 +1,11 @@
+{
+	'estados' : [],
+	'estadosIniciais' : [],
+	'estadoFinal': '',
+	'alfabeto' : [],
+	'transicao' : [{
+		'estado' : '',
+		'simbolo' : '',
+		'proximosEstados': []
+	}]
+}

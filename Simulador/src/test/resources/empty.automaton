@@ -1,0 +1,8 @@
+// -> q0
+{
+	'estados' : ['q0'],
+	'estadosFinais' : ['q0'],
+	'estadoInicial': 'q0',
+	'alfabeto' : ['a', 'b'],
+	'transicao' : []
+}
