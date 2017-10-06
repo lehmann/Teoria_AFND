@@ -1,0 +1,26 @@
+/**
+ *        ---&---> q3 ---a---
+ *       /                   \
+ *  -> q0 ---&---> q1 ---b---> q2
+ *  
+ */
+{
+	'estados' : ['q0', 'q1', 'q2', 'q3'],
+	'estadosFinais' : ['q2'],
+	'estadoInicial': 'q0',
+	'alfabeto' : ['a', 'b'],
+	'transicao' : [{
+		'estado' : 'q0',
+		'simbolo' : '&',
+		'proximosEstados': ['q1', 'q3']
+	}, {
+		'estado' : 'q3',
+		'simbolo' : 'a',
+		'proximosEstados': ['q2']
+	}, {
+		'estado' : 'q1',
+		'simbolo' : 'b',
+		'proximosEstados': ['q2']
+	}],
+	'stringVazia' : '&'
+}

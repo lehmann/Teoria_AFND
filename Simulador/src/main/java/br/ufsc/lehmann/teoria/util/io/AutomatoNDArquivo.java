@@ -10,6 +10,7 @@ public class AutomatoNDArquivo implements AutomatoND {
 	private TransicaoArquivo[] transicao;
 	private char[] alfabeto;
 	private String[] estados;
+	private Character stringVazia;
 
 	public String getEstadoInicial() {
 		return estadoInicial;
@@ -60,7 +61,7 @@ public class AutomatoNDArquivo implements AutomatoND {
 	}
 
 	public TransicaoND funcaoTransicao() {
-		return new TransicaoNDArquivo(this.transicao);
+		return new TransicaoNDArquivo(this.transicao, this.stringVazia);
 	}
 
 	public String[] estadosFinais() {
@@ -69,6 +70,14 @@ public class AutomatoNDArquivo implements AutomatoND {
 
 	public String estadoInicial() {
 		return this.estadoInicial;
+	}
+
+	public void setStringVazia(Character stringVazia) {
+		this.stringVazia = stringVazia;
+	}
+
+	public Character getStringVazia() {
+		return stringVazia;
 	}
 
 }

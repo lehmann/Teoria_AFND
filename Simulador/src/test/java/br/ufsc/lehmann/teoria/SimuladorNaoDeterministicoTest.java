@@ -56,4 +56,64 @@ public class SimuladorNaoDeterministicoTest {
 		assertFalse(simulador.aceitacao(automato, "aba"));
 		assertTrue(simulador.aceitacao(automato, "abab"));
 	}
+	
+	@Test
+	public void basicNonDeterministic() throws Exception {
+		/**
+		 *  -> q0 ---&---> q1 ---b---> q2
+		 */
+		AutomatoND automato = new AutomatoLoad().carregaArquivo(new File("./src/test/resources/basicNonDeterministic.automaton"));
+		assertFalse(simulador.aceitacao(automato, ""));
+		assertFalse(simulador.aceitacao(automato, "a"));
+		assertFalse(simulador.aceitacao(automato, "ab"));
+		assertTrue(simulador.aceitacao(automato, "b"));
+		assertFalse(simulador.aceitacao(automato, "ba"));
+	}
+	
+	@Test
+	public void basicNonDeterministic2() throws Exception {
+		/**
+		 *  -> q0 ---&a---> q1 ---b---> q2
+		 */
+		AutomatoND automato = new AutomatoLoad().carregaArquivo(new File("./src/test/resources/basicNonDeterministic2.automaton"));
+		assertFalse(simulador.aceitacao(automato, ""));
+		assertFalse(simulador.aceitacao(automato, "a"));
+		assertTrue(simulador.aceitacao(automato, "ab"));
+		assertTrue(simulador.aceitacao(automato, "b"));
+		assertFalse(simulador.aceitacao(automato, "ba"));
+	}
+	
+	@Test
+	public void forkingPathNonDeterministic() throws Exception {
+		/**
+		 *        ---&---> q3 ---a---
+		 *       /                   \
+		 *  -> q0 ---&---> q1 ---b---> q2
+		 */
+		AutomatoND automato = new AutomatoLoad().carregaArquivo(new File("./src/test/resources/forkingPathNonDeterministic.automaton"));
+		assertFalse(simulador.aceitacao(automato, ""));
+		assertTrue(simulador.aceitacao(automato, "a"));
+		assertFalse(simulador.aceitacao(automato, "ab"));
+		assertTrue(simulador.aceitacao(automato, "b"));
+		assertFalse(simulador.aceitacao(automato, "ba"));
+	}
+	
+	@Test
+	public void loopingPathNonDeterministic() throws Exception {
+		/**
+		 *     a,b
+		 *    /   \ 
+		 *    \   /
+		 *  -> q0 ---b---> q1
+		 */
+		AutomatoND automato = new AutomatoLoad().carregaArquivo(new File("./src/test/resources/loopingPathNonDeterministic.automaton"));
+		assertFalse(simulador.aceitacao(automato, ""));
+		assertFalse(simulador.aceitacao(automato, "a"));
+		assertTrue(simulador.aceitacao(automato, "ab"));
+		assertTrue(simulador.aceitacao(automato, "b"));
+		assertFalse(simulador.aceitacao(automato, "ba"));
+		assertFalse(simulador.aceitacao(automato, "aaabbbabaaba"));
+		assertTrue(simulador.aceitacao(automato, "bbbab"));
+		assertTrue(simulador.aceitacao(automato, "babab"));
+	}
 }
