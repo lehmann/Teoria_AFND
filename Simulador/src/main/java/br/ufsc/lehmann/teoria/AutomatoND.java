@@ -3,7 +3,7 @@ package br.ufsc.lehmann.teoria;
 public interface AutomatoND {
 
 	String[] estados();
-	char[] alfabeto();
+	Character[] alfabeto();
 	TransicaoND funcaoTransicao();
 	String[] estadosFinais();
 	String estadoInicial();

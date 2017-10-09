@@ -15,7 +15,8 @@ public class SimuladorNaoDeterministico {
 			Input input = frame.input;
 			String estadoAtual = frame.estadoAtual;
 			if(!input.isEmpty()) {
-				assert Arrays.asList(automato.alfabeto()).contains(input.get()) : "Elemento encontrado não pertence ao alfabeto";
+				if(!Arrays.asList(automato.alfabeto()).contains(input.get()))
+					throw new IllegalArgumentException("Elemento encontrado não pertence ao alfabeto");
 			} else {
 				if(Arrays.asList(automato.estadosFinais()).contains(estadoAtual)) {
 					return true;

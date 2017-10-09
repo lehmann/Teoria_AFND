@@ -4,14 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
-import org.junit.Before;
 import org.junit.Test;
-
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonSyntaxException;
 
 import br.ufsc.lehmann.teoria.util.io.AutomatoLoad;
 
@@ -115,5 +109,23 @@ public class SimuladorNaoDeterministicoTest {
 		assertFalse(simulador.aceitacao(automato, "aaabbbabaaba"));
 		assertTrue(simulador.aceitacao(automato, "bbbab"));
 		assertTrue(simulador.aceitacao(automato, "babab"));
+	}
+	
+	@Test
+	public void nonDeterministicTwoPath() throws Exception {
+		/**
+		 *        ---a---> q2 ---b---> q3
+		 *       /          ^          |
+		 *      |            \---a----/
+		 *  -> q0 ---a---> q1
+		 *  
+		 */
+		AutomatoND automato = new AutomatoLoad().carregaArquivo(new File("./src/test/resources/nonDeterministicTwoPath.automaton"));
+		assertFalse(simulador.aceitacao(automato, ""));
+		assertTrue(simulador.aceitacao(automato, "a"));
+		assertFalse(simulador.aceitacao(automato, "aa"));
+		assertTrue(simulador.aceitacao(automato, "ab"));
+		assertFalse(simulador.aceitacao(automato, "aba"));
+		assertTrue(simulador.aceitacao(automato, "abab"));
 	}
 }
