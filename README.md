@@ -9,6 +9,8 @@ Assim como a descrição formal de um AFND, cada autômato deste trabalho també
  - Lista contendo todo o alfabeto aceito pelo autômato;
  - Função de transição.
 
+[![N|Solid](https://raw.githubusercontent.com/lehmann/Teoria_AFND/master/Simulador/src/main/resources/Trabalho%201%20-%20Formaliza%C3%A7%C3%A3o.png)]
+ 
 Aqui temos a descrição de um autômato não-determinístico que aceite tanto a String ‘a’ quanto ‘ab’. Isto é possível pela utilização de uma regra de transição que aceite a String vazia ‘’ vindo de q0 e indo para q1. Podemos ver também que este simulador aceita uma definição parcial da função de transição, pois nem todos os estados possuem transições para todos os símbolos do alfabeto.
 A computação deste autômato por este simulador é realizada através da classe SimuladorNaoDeterministico, que recebe um objeto da classe AutomatoND representando o autômato e um objeto da classe String representando a String de entrada, e tem como saída um booleano indicando a aceitação ou não deste String pelo autômato.
 Para que seja possível representar um autômato através de um objeto JSON, como o exemplo dado acima, foi criada a classe auxiliar AutomatoLoad, que realiza a leitura de um arquivo contendo o JSON e retorna um objeto do tipo AutomatoND.
