@@ -8,8 +8,8 @@ public class Input {
 		this.input = input;
 	}
 
-	public Character get() {
-		return input.charAt(0);
+	public String get() {
+		return input.substring(0, 1);
 	}
 	
 	public void consume() {

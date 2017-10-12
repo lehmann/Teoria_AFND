@@ -22,6 +22,5 @@
 		'estado' : 'q3',
 		'simbolo' : 'a',
 		'proximosEstados': ['q2']
-	}],
-	'stringVazia' : '&'
+	}]
 }

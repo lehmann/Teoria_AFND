@@ -22,21 +22,11 @@ public class SimuladorNaoDeterministico {
 					return true;
 				}
 			}
-			String[] proximosEstados = automato.funcaoTransicao().proximosEstados(estadoAtual, input);
+			Frame[] proximosEstados = automato.funcaoTransicao().proximosEstados(estadoAtual, input);
 			if(proximosEstados != null && proximosEstados.length > 0) {
-				processar.addAll(Arrays.asList(proximosEstados).stream().map(e -> new Frame(e, input.clone())).collect(Collectors.toList()));
+				processar.addAll(Arrays.asList(proximosEstados));
 			}
 		}
 		return false;
-	}
-	
-	private static class Frame {
-		private String estadoAtual;
-		private Input input;
-
-		public Frame(String estado, Input input) {
-			estadoAtual = estado;
-			this.input = input;
-		}
 	}
 }

@@ -17,6 +17,5 @@
 		'estado' : 'q0',
 		'simbolo' : 'b',
 		'proximosEstados': ['q0', 'q1']
-	}],
-	'stringVazia' : '&'
+	}]
 }

@@ -6,12 +6,11 @@
 	'alfabeto' : ['a', 'b'],
 	'transicao' : [{
 		'estado' : 'q0',
-		'simbolo' : '&',
+		'simbolo' : '',
 		'proximosEstados': ['q1']
 	}, {
 		'estado' : 'q1',
 		'simbolo' : 'b',
 		'proximosEstados': ['q2']
-	}],
-	'stringVazia' : '&'
+	}]
 }

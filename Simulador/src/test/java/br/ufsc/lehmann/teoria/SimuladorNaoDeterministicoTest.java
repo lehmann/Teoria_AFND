@@ -78,6 +78,21 @@ public class SimuladorNaoDeterministicoTest {
 	}
 	
 	@Test
+	public void basicNonDeterministic3() throws Exception {
+		/**
+		 *  -> q0 ---&a---> q1 ---a---> q2 ---b---> q3
+		 */
+		AutomatoND automato = new AutomatoLoad().carregaArquivo(new File("./src/test/resources/basicNonDeterministic3.automaton"));
+		assertFalse(simulador.aceitacao(automato, ""));
+		assertFalse(simulador.aceitacao(automato, "a"));
+		assertFalse(simulador.aceitacao(automato, "aa"));
+		assertTrue(simulador.aceitacao(automato, "ab"));
+		assertTrue(simulador.aceitacao(automato, "aab"));
+		assertFalse(simulador.aceitacao(automato, "b"));
+		assertFalse(simulador.aceitacao(automato, "ba"));
+	}
+	
+	@Test
 	public void forkingPathNonDeterministic() throws Exception {
 		/**
 		 *        ---&---> q3 ---a---
